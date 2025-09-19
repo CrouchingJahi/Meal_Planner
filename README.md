@@ -1,3 +1,11 @@
+# Meal Planner
+
+Store recipes
+Keep inventory of perishables to use, meal prep to do
+Create meal schedule, make sure freezer food is being cycled
+Suggest recipes based on available food
+Calendar integration - include previous day steps for meal prep
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
