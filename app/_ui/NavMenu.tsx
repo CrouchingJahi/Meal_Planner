@@ -32,7 +32,9 @@ export default function NavMenu () {
 
   function NavLink ({link, label, Icon}: {link: string, label: string, Icon: ComponentType}) {
     const isActive = currentPath == link
-    return <Link className={`p-1 p-r-2 flex gap-1 items-end border-r-4 hover:text-cyan-600 transition-colors ${isActive ? 'text-cyan-600 border-cyan-600' : 'border-transparent'}`} href={link} title={label}>
+    const isAncestorActive = currentPath.startsWith(link) && link != '/'
+    const linkClasses = `nav p-1 p-r-4 flex gap-1 items-end border-r-4 hover:text-links transition-colors ${isActive ? 'text-links border-links' : isAncestorActive ? 'text-foreground border-links' : 'text-foreground border-transparent'}`
+    return <Link href={link} title={label} className={linkClasses}>
       <Icon />
       {/* <div className={isNavExpanded ? '' : 'hidden'}>{ label }</div> */}
     </Link>

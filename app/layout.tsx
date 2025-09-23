@@ -33,7 +33,7 @@ export default function RootLayout({
           <h1>Logo</h1>
         </header>
         <NavMenu />
-        <main className="bg-body-background p-4">
+        <main className="bg-background p-4">
           {children}
         </main>
       </body>
