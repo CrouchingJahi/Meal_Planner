@@ -18,7 +18,7 @@ export default function RecipeDisplay ({ recipe }: {recipe: RecipeProps | null})
       { recipe.ingredients.map(ingrSet => <div key={ingrSet.name}>
         <div>{ ingrSet.name }</div>
         <ul>
-          { ingrSet.ingredients.map(ingr => <li key={ingr.name}>{ ingr.quantity }{ ingr.quantityLabel } { ingr.name }</li>) }
+          { ingrSet.ingredients.map(ingr => <li key={ingr.name}>{ ingr.quantity }{ ingr.unit } { ingr.name }</li>) }
         </ul>
       </div>) }
     </div>

@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { RecipesByCategory } from "@/recipes/definitions";
 
-export default function RecipeListing({ recipesByCategory, totalRecipes }: { recipesByCategory: RecipesByCategory, totalRecipes: number }) {
+export default function RecipeList({ recipesByCategory, totalRecipes }: { recipesByCategory: RecipesByCategory, totalRecipes: number }) {
   const categoryList = Object.keys(recipesByCategory)
 
   return <div>

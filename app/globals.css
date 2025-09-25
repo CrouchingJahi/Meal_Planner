@@ -11,6 +11,10 @@
   --color-foreground: var(--foreground);
   --color-body-background: var(--body-background);
   --color-links: var(--color-cyan-600);
+  --color-form-border: var(--color-slate-700);
+  --color-form-bg: var(--color-slate-900);
+  --color-cta: var(--color-emerald-700);
+  --color-faded: var(--color-slate-600);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

@@ -3,23 +3,23 @@ import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, getDoc, getDocs, setDoc, Firestore, collection } from "firebase/firestore";
 
-let firebaseConfig = {
+const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
   projectId: process.env.FIREBASE_PROJECT_ID,
   storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.FIREBASE_APP_ID,
-};
+}
 
-let dbInstance : Firestore;
+let dbInstance : Firestore
 
 // Initialize Firebase
-function getDB () {
+async function getDB () {
   if (dbInstance) return dbInstance
   const firebaseApp = initializeApp(firebaseConfig)
   const auth = getAuth(firebaseApp)
-  signInWithEmailAndPassword(auth, process.env.FIREBASE_AUTH_USER || '', process.env.FIREBASE_AUTH_PASS || '')
+  await signInWithEmailAndPassword(auth, process.env.FIREBASE_AUTH_USER || '', process.env.FIREBASE_AUTH_PASS || '')
   dbInstance = getFirestore(firebaseApp)
   return dbInstance
 }
@@ -27,7 +27,7 @@ function getDB () {
 export async function getRecipe (id: string) {
   if (!id) return null
 
-  const db = getDB()
+  const db = await getDB()
   const recipeRef = doc(db, 'recipes', id)
   const recipeSnapshot = await getDoc(recipeRef)
   if (recipeSnapshot.exists()) {
@@ -53,7 +53,7 @@ export async function getAllRecipes () {
 */
 
 export async function getRecipesByCategory () {
-  const db = getDB()
+  const db = await getDB()
   const recipeCollection: RecipesByCategory = {}
 
   const categorySnapshot = await getDocs(collection(db, 'categories'))
@@ -77,11 +77,11 @@ export async function getRecipesByCategory () {
 }
 
 export async function createCategory (category: CategoryProps) {
-  const db = getDB()
+  const db = await getDB()
   await setDoc(doc(db, 'categories', category.id), { ...category })
 }
 
 export async function createRecipe (recipe: RecipeProps) {
-  const db = getDB()
+  const db = await getDB()
   await setDoc(doc(db, 'recipes', recipe.id), { ...recipe })
 }

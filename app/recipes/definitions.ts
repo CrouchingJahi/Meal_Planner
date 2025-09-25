@@ -4,21 +4,21 @@ export type CategoryProps = {
 }
 
 // Will want functionality for separate sets of ingredients
-type IngredientSet = {
+type IngredientGroup = {
   name: string,
-  ingredients: Array<{ name: string, quantity: number, quantityLabel: string }>
+  ingredients: Array<{ name: string, quantity: number, unit: string }>
 }
 
 export type RecipeProps = {
   id: string,
   title: string,
-  description: string,
+  description?: string,
   categoryId: string,
   servings: number,
-  activeCookingTime: string,
-  totalCookingTime: string,
-  ingredients: Array<IngredientSet>,
-  instructions: Array<{ step: number, timing?: string, description: string}>,
+  activeCookingTime?: string,
+  totalCookingTime?: string,
+  ingredients: Array<IngredientGroup>,
+  instructions: Array<{ timing?: string, description: string}>,
 }
 
 interface RecipeCategoryListing extends CategoryProps {
